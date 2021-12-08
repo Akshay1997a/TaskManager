@@ -3,9 +3,11 @@ import colors from './colors';
 import {isIphoneX, getStatusBarHeight} from 'react-native-iphone-x-helper';
 import {StyleSheet} from 'react-native';
 
+type MODE = 'light' | 'dark';
+
 declare module 'styled-components' {
   export interface DefaultTheme {
-    mode?: string;
+    mode?: MODE;
     PRIMARY_BACKGROUND_COLOR?: string;
     SECONDARY_BACKGROUND_COLOR?: string;
     PRIMARY_TEXT_COLOR?: string;
@@ -24,19 +26,19 @@ declare module 'styled-components' {
 
 export const lightTheme: DefaultTheme = {
   mode: 'light',
-  PRIMARY_BACKGROUND_COLOR: 'white',
+  PRIMARY_BACKGROUND_COLOR: '#EEEEEE',
   SECONDARY_BACKGROUND_COLOR: '#f7f7f7',
-  PRIMARY_TEXT_COLOR: '#202125',
-  SECONDARY_TEXT_COLOR: '#5e6267',
-  PRIMARY_BUTTON_COLOR: colors.radiantBlue,
-  SECONDARY_BUTTON_COLOR: colors.radiantBlue,
+  PRIMARY_TEXT_COLOR: colors.black,
+  SECONDARY_TEXT_COLOR: 'rgba(0,0,0,0.8)',
+  PRIMARY_BUTTON_COLOR: '#50C2C9',
+  SECONDARY_BUTTON_COLOR: colors.color1,
   HAIRLINE_COLOR: '#C9C9CB',
   GRADIENT: [
     'rgba(255,255,255,0)',
     'rgba(255,255,255,0)',
     'rgba(255,255,255,1)',
   ],
-  SHADOW: ` 1px 1px 5px rgba(32, 33, 37, 0.1)`,
+  SHADOW: ' 1px 1px 5px rgba(32, 33, 37, 0.1)',
 
   FONT_REGULAR: 'Montserrat-Regular',
   FONT_MEDIUM: 'Montserrat-Medium',
@@ -90,3 +92,12 @@ export interface ThemeProps {
 export interface StyleProps {
   theme: ThemeProps;
 }
+
+export const FONT_SIZES = {
+  H1: 31,
+  H2: 28,
+  H3: 22,
+  H4: 20,
+  H5: 17,
+  P: 15,
+};

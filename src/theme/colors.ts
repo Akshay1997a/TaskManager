@@ -11,7 +11,7 @@ const colors = {
   yellow: '#FEC712',
   yellow2: '#F1A342',
 
-  color1: '#A8D1D3',
+  color1: '#50C2C9',
 
   color2: '#515A9F',
   color3: '#DD956E',
