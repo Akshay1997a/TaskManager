@@ -11,7 +11,7 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
 import RootNavigator from './navigations/RootNavigator';
-import {lightTheme} from './theme/themes';
+import {darkTheme, lightTheme} from './theme/themes';
 
 const App = () => {
   return (

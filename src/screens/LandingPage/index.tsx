@@ -4,6 +4,11 @@ import {P, H4, Container, Row} from '../../components/Primitives/Primitives';
 import Logo from '../../assets/svgs/splash_screen_ic.svg';
 import Shape from '../../assets/svgs/shape.svg';
 import ButtonPrimary from '../../components/Buttons/ButtonPrimary';
+import {
+  fontScale,
+  heightScale,
+  widthScale,
+} from '../../helpers/ResponsiveDesign';
 
 const LandingPage = () => {
   return (
@@ -11,7 +16,7 @@ const LandingPage = () => {
       <Row>
         <Shape />
       </Row>
-      <Logo />
+      <Logo style={styles.icon} />
       <H4>Get things done with TODo</H4>
       <P style={styles.subTitle}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eleifend
@@ -30,7 +35,12 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'space-between',
   },
+  icon: {
+    marginBottom: heightScale(83),
+  },
   subTitle: {
+    width: widthScale(300),
+    fontSize: fontScale(13),
     textAlign: 'center',
   },
   but: {

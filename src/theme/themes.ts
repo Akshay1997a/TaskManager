@@ -30,7 +30,7 @@ export const lightTheme: DefaultTheme = {
   SECONDARY_BACKGROUND_COLOR: '#f7f7f7',
   PRIMARY_TEXT_COLOR: colors.black,
   SECONDARY_TEXT_COLOR: 'rgba(0,0,0,0.8)',
-  PRIMARY_BUTTON_COLOR: '#50C2C9',
+  PRIMARY_BUTTON_COLOR: colors.color1,
   SECONDARY_BUTTON_COLOR: colors.color1,
   HAIRLINE_COLOR: '#C9C9CB',
   GRADIENT: [
@@ -47,11 +47,11 @@ export const lightTheme: DefaultTheme = {
 
 export const darkTheme: DefaultTheme = {
   mode: 'dark',
-  PRIMARY_BACKGROUND_COLOR: 'black',
+  PRIMARY_BACKGROUND_COLOR: '#121212',
   SECONDARY_BACKGROUND_COLOR: '#333',
   PRIMARY_TEXT_COLOR: 'white',
   SECONDARY_TEXT_COLOR: 'rgba(255,255,255,0.87)',
-  PRIMARY_BUTTON_COLOR: 'white',
+  PRIMARY_BUTTON_COLOR: colors.color1,
   SECONDARY_BUTTON_COLOR: 'white',
   HAIRLINE_COLOR: '#C9C9CB',
   GRADIENT: ['rgba(0,0,0,0)', 'rgba(0,0,0,0)', 'rgba(0,0,0,1)'],

@@ -2,16 +2,21 @@ import React from 'react';
 import styled from 'styled-components/native';
 import {H5} from '../Primitives/Primitives';
 import colors from '../../theme/colors';
-import {TouchableOpacityProps} from 'react-native';
+import {ActivityIndicator, TouchableOpacityProps} from 'react-native';
 
 interface ButtonPrimaryProps extends TouchableOpacityProps {
   title: String;
+  isLoading?: boolean;
 }
 
 export default function ButtonPrimary(props: ButtonPrimaryProps) {
   return (
     <ButtonContainer {...props}>
-      <ButtonTitle>{props.title}</ButtonTitle>
+      {!props.isLoading ? (
+        <ButtonTitle>{props.title}</ButtonTitle>
+      ) : (
+        <ActivityIndicator size="large" color={colors.white} />
+      )}
     </ButtonContainer>
   );
 }
