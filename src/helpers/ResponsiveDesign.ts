@@ -19,7 +19,7 @@ export const heightScale = (size: number, factor = 1) => {
     factor = 0.12;
   }
   if (Platform.OS === 'android') {
-    factor = 1;
+    factor = 0;
   }
   return size + (verticalScale(size) - size) * factor;
 };
