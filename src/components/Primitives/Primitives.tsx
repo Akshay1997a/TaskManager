@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import colors from '../../theme/colors';
 import {FONT_SIZES} from '../../theme/themes';
 
 export const Container = styled.View(props => ({
@@ -8,6 +9,11 @@ export const Container = styled.View(props => ({
 }));
 
 export const Row = styled.View({
+  width: '100%',
+  flexDirection: 'row',
+});
+
+export const Col = styled.View({
   width: '100%',
 });
 
@@ -58,9 +64,13 @@ export const H5 = styled.Text(props => ({
 
 export const P = styled.Text(props => ({
   fontSize: FONT_SIZES.P,
-  lineHeight: 25,
   fontFamily: props.theme.FONT_BOLD,
   marginTop: 10,
-  marginBlock: 10,
+  marginBottom: 10,
   color: props.theme.PRIMARY_TEXT_COLOR,
 }));
+
+export const ErrorText = styled(P)({
+  color: colors.red,
+  margin: 0,
+});

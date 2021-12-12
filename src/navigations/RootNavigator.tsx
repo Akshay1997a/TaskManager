@@ -6,6 +6,7 @@ import {
 import React from 'react';
 import {StatusBar} from 'react-native';
 import LandingPage from '../screens/LandingPage';
+import AuthNavigator from './AuthNavigator';
 import {ROUTES} from './Routes';
 
 export default function RootNavigator() {
@@ -16,6 +17,7 @@ export default function RootNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={options}>
+        <Stack.Screen name={ROUTES.AUTH} component={AuthNavigator} />
         <Stack.Screen name={ROUTES.LANDING_PAGE} component={LandingPage} />
       </Stack.Navigator>
     </NavigationContainer>

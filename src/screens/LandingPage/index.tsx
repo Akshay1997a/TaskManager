@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {P, H4, Container, Row} from '../../components/Primitives/Primitives';
+import {P, H4, Container, Col} from '../../components/Primitives/Primitives';
 import Logo from '../../assets/svgs/splash_screen_ic.svg';
 import Shape from '../../assets/svgs/shape.svg';
 import ButtonPrimary from '../../components/Buttons/ButtonPrimary';
@@ -13,18 +13,18 @@ import {
 const LandingPage = () => {
   return (
     <Container style={styles.container}>
-      <Row>
+      <Col>
         <Shape />
-      </Row>
+      </Col>
       <Logo style={styles.icon} />
       <H4>Get things done with TODo</H4>
       <P style={styles.subTitle}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eleifend
         donec commodo ornare.
       </P>
-      <Row style={styles.but}>
+      <Col style={styles.but}>
         <ButtonPrimary title="Submit" />
-      </Row>
+      </Col>
     </Container>
   );
 };

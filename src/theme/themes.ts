@@ -12,6 +12,8 @@ declare module 'styled-components' {
     SECONDARY_BACKGROUND_COLOR?: string;
     PRIMARY_TEXT_COLOR?: string;
     SECONDARY_TEXT_COLOR?: string;
+    PRIMARY_TEXT_COLOR_INVERTED?: string;
+    SECONDARY_TEXT_COLOR_INVERTED?: string;
     PRIMARY_BUTTON_COLOR?: string;
     SECONDARY_BUTTON_COLOR?: string;
     HAIRLINE_COLOR?: string;
@@ -30,6 +32,8 @@ export const lightTheme: DefaultTheme = {
   SECONDARY_BACKGROUND_COLOR: '#f7f7f7',
   PRIMARY_TEXT_COLOR: colors.black,
   SECONDARY_TEXT_COLOR: 'rgba(0,0,0,0.8)',
+  PRIMARY_TEXT_COLOR_INVERTED: colors.white,
+  SECONDARY_TEXT_COLOR_INVERTED: 'rgba(1,1,1,0.8)',
   PRIMARY_BUTTON_COLOR: colors.color1,
   SECONDARY_BUTTON_COLOR: colors.color1,
   HAIRLINE_COLOR: '#C9C9CB',
@@ -49,8 +53,10 @@ export const darkTheme: DefaultTheme = {
   mode: 'dark',
   PRIMARY_BACKGROUND_COLOR: '#121212',
   SECONDARY_BACKGROUND_COLOR: '#333',
-  PRIMARY_TEXT_COLOR: 'white',
+  PRIMARY_TEXT_COLOR: colors.white,
   SECONDARY_TEXT_COLOR: 'rgba(255,255,255,0.87)',
+  PRIMARY_TEXT_COLOR_INVERTED: colors.black,
+  SECONDARY_TEXT_COLOR_INVERTED: 'rgba(0,0,0,0.87)',
   PRIMARY_BUTTON_COLOR: colors.color1,
   SECONDARY_BUTTON_COLOR: 'white',
   HAIRLINE_COLOR: '#C9C9CB',
