@@ -12,6 +12,7 @@ const colors = {
   yellow2: '#F1A342',
 
   color1: '#50C2C9',
+  transparent: 'rgba(0,0,0,0)',
 
   color2: '#515A9F',
   color3: '#DD956E',

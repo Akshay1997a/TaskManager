@@ -7,16 +7,23 @@ import {
   Keyboard,
 } from 'react-native';
 import {isIos} from '../helpers';
+import metrices from '../theme/metrices';
 
 function KeyboardAvoidingWrapper(props: KeyboardAvoidingViewProps) {
   const scrollRef = useRef<ScrollView>(null);
 
   return (
-    <KeyboardAvoidingView {...props} style={styles.container}>
+    <KeyboardAvoidingView
+      {...props}
+      contentContainerStyle={styles.container}
+      keyboardVerticalOffset={200}>
       <ScrollView
         ref={scrollRef}
         bounces={false}
-        contentContainerStyle={styles.container}
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollStyle}
+        keyboardDismissMode="interactive"
         scrollToOverflowEnabled={true}>
         {props.children}
       </ScrollView>
@@ -28,7 +35,12 @@ export default KeyboardAvoidingWrapper;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     width: '100%',
+    alignItems: 'center',
+  },
+  scrollStyle: {
+    width: metrices.screenWidth,
+    alignItems: 'center',
   },
 });

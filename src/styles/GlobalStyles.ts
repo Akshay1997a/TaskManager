@@ -10,6 +10,10 @@ export const GlobalStyles = StyleSheet.create({
   alignCenter: {
     alignItems: 'center',
   },
+  MV10: {
+    marginTop: 10,
+    marginBottom: 10,
+  },
   MT10: {
     marginTop: 10,
   },

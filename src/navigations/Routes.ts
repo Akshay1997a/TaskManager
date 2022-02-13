@@ -5,6 +5,7 @@ enum ROUTES {
   AUTH = 'Auth',
   REGISTER = 'Register',
   LOGIN = 'Login',
+  SIGNUP = 'Signup',
   CONFIRM = 'ConfirmUser',
   RECOVER = 'ForgotPassword',
 }

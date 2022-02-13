@@ -2,6 +2,7 @@ import {DefaultTheme} from 'styled-components';
 import colors from './colors';
 import {isIphoneX, getStatusBarHeight} from 'react-native-iphone-x-helper';
 import {StyleSheet} from 'react-native';
+import {fontScale} from '../helpers/ResponsiveDesign';
 
 type MODE = 'light' | 'dark';
 
@@ -44,9 +45,9 @@ export const lightTheme: DefaultTheme = {
   ],
   SHADOW: ' 1px 1px 5px rgba(32, 33, 37, 0.1)',
 
-  FONT_REGULAR: 'Montserrat-Regular',
-  FONT_MEDIUM: 'Montserrat-Medium',
-  FONT_BOLD: 'Montserrat-Bold',
+  FONT_REGULAR: 'Poppins-Regular',
+  FONT_MEDIUM: 'Poppins-Medium',
+  FONT_BOLD: 'Poppins-Bold',
 };
 
 export const darkTheme: DefaultTheme = {
@@ -63,9 +64,9 @@ export const darkTheme: DefaultTheme = {
   GRADIENT: ['rgba(0,0,0,0)', 'rgba(0,0,0,0)', 'rgba(0,0,0,1)'],
   SHADOW: ' 1px 1px 5px rgba(32, 33, 37, 0.1)',
 
-  FONT_REGULAR: 'Montserrat-Regular',
-  FONT_MEDIUM: 'Montserrat-Medium',
-  FONT_BOLD: 'Montserrat-Bold',
+  FONT_REGULAR: 'Poppins-Regular',
+  FONT_MEDIUM: 'Poppins-Medium',
+  FONT_BOLD: 'Poppins-Bold',
 };
 
 export const constants = {
@@ -74,9 +75,9 @@ export const constants = {
 };
 
 export const fonts = {
-  regular: 'Montserrat-Regular',
-  medium: 'Montserrat-Medium',
-  bold: 'Montserrat-Bold',
+  regular: 'Poppins-Regular',
+  medium: 'Poppins-Medium',
+  bold: 'Poppins-Bold',
 
   domine: 'Domine-Regular',
   domineBold: 'Domine-Bold',
@@ -100,10 +101,10 @@ export interface StyleProps {
 }
 
 export const FONT_SIZES = {
-  H1: 31,
-  H2: 28,
-  H3: 22,
-  H4: 20,
-  H5: 17,
-  P: 15,
+  H1: fontScale(31),
+  H2: fontScale(28),
+  H3: fontScale(22),
+  H4: fontScale(20),
+  H5: fontScale(17),
+  P: fontScale(15),
 };
