@@ -8,12 +8,17 @@
  * @format
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ThemeProvider} from 'styled-components';
 import RootNavigator from './navigations/RootNavigator';
 import {darkTheme, lightTheme} from './theme/themes';
+import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <ThemeProvider theme={lightTheme}>
       <RootNavigator />
