@@ -1,4 +1,4 @@
-package com.taskmanager;
+package com.bugboard;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

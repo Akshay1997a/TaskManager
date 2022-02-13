@@ -25,11 +25,14 @@ import {GlobalStyles} from '../../styles/GlobalStyles';
 import KeyboardAvoidingWrapper from '../../components/KeyboardAvoidingWrapper';
 import colors from '../../theme/colors';
 import {TouchableIcon} from '../../components/Icons';
+import {useNavigation} from '@react-navigation/native';
+import {ROUTES} from '../../navigations/Routes';
 
 const Signup = () => {
   const theme = useTheme();
   const [isLoading, setLoading] = useState(false);
   const [isPasswordVisible, setPasswordVisible] = useState(false);
+  const navigation = useNavigation();
   const initialValues = {
     name: '',
     email: '',
@@ -41,6 +44,10 @@ const Signup = () => {
     setTimeout(() => {
       setLoading(false);
     });
+  };
+
+  const gotoLoginPage = () => {
+    navigation.navigate(ROUTES.LOGIN as never);
   };
 
   return (
@@ -142,6 +149,7 @@ const Signup = () => {
                   frontText="Already have an account? "
                   color={theme.PRIMARY_BUTTON_COLOR}
                   fontSize={13}
+                  onPress={gotoLoginPage}
                 />
               </Footer>
             </FormContainer>

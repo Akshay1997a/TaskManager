@@ -41,7 +41,13 @@ export default function ForgetPassword() {
         }) => (
           <FormContainer>
             <FormGroup>
-              <Input placeholder="Email" letfIcon="person" />
+              <Input
+                placeholder="Email"
+                letfIcon="person"
+                textContentType="emailAddress"
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
               <StyledErrorText>{touched.email && errors.email}</StyledErrorText>
             </FormGroup>
             <Footer>

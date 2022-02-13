@@ -34,6 +34,11 @@ import metrices from '../../theme/metrices';
 import {GlobalStyles} from '../../styles/GlobalStyles';
 import KeyboardAvoidingWrapper from '../../components/KeyboardAvoidingWrapper';
 import {Icon, TouchableIcon} from '../../components/Icons';
+import {useNavigation} from '@react-navigation/native';
+import {ROUTES} from '../../navigations/Routes';
+import {useAppDispatch, useAppSelector} from '../../hooks/redux';
+import {getLoading, setLoading} from '../../store/loading/loadingSlice';
+import {login} from '../../store/auth/authThunks';
 
 const Login = () => {
   const theme = useTheme();
@@ -42,7 +47,9 @@ const Login = () => {
   const logoAnimation = useRef(new Animated.Value(1)).current;
   const titelTextAnim = useRef(new Animated.Value(0)).current;
   const AnimatedTitle = Animated.createAnimatedComponent(H4);
-  const [isLoading, setLoading] = useState(false);
+  const navigation = useNavigation();
+  const isLoading = useAppSelector(getLoading);
+  const dispatch = useAppDispatch();
   const [isPasswordVisible, setPasswordVisible] = useState(false);
 
   const onShowHide = (event: 'hide' | 'show') => {
@@ -60,11 +67,13 @@ const Login = () => {
     ]).start();
   };
 
-  const handleLogin = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+  const handleLogin = async (values: any) => {
+    console.log(values);
+    await dispatch(login({email: values.email, password: values.password}));
+  };
+
+  const gotoSignupPage = () => {
+    navigation.navigate(ROUTES.SIGNUP as never);
   };
 
   useEffect(() => {
@@ -164,10 +173,11 @@ const Login = () => {
               />
               <TextButton
                 title="Sign Up"
-                frontText="Already have an account? "
+                frontText="Don't have an account? "
                 color={theme.PRIMARY_BUTTON_COLOR}
                 fontSize={13}
                 contentContainerStyle={GlobalStyles.MT10}
+                onPress={gotoSignupPage}
               />
             </Col>
           </Container>

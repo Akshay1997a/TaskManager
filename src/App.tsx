@@ -13,6 +13,8 @@ import {ThemeProvider} from 'styled-components';
 import RootNavigator from './navigations/RootNavigator';
 import {darkTheme, lightTheme} from './theme/themes';
 import SplashScreen from 'react-native-splash-screen';
+import {Provider} from 'react-redux';
+import {store} from './store/store';
 
 const App = () => {
   useEffect(() => {
@@ -20,9 +22,11 @@ const App = () => {
   }, []);
 
   return (
-    <ThemeProvider theme={lightTheme}>
-      <RootNavigator />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={lightTheme}>
+        <RootNavigator />
+      </ThemeProvider>
+    </Provider>
   );
 };
 

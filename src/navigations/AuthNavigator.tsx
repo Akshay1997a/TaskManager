@@ -15,9 +15,9 @@ export default function AuthNavigator() {
   };
   return (
     <Stack.Navigator screenOptions={options}>
-      <Stack.Screen name={ROUTES.RECOVER} component={ForgetPassword} />
       <Stack.Screen name={ROUTES.LOGIN} component={Login} />
       <Stack.Screen name={ROUTES.SIGNUP} component={Signup} />
+      <Stack.Screen name={ROUTES.RECOVER} component={ForgetPassword} />
     </Stack.Navigator>
   );
 }
