@@ -29,7 +29,7 @@ const Input = (props: InputProps) => {
   );
 };
 
-export default Input;
+export default React.memo(Input);
 
 const TextInputWrapper = styled(RNView)(props => ({
   borderRadius: 100,

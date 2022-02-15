@@ -141,13 +141,13 @@ const Login = () => {
                 textContentType="password"
                 autoComplete="password"
                 enablesReturnKeyAutomatically
-                secureTextEntry={isPasswordVisible}
+                secureTextEntry={!isPasswordVisible}
                 blurOnSubmit
                 returnKeyType="done"
                 letfIcon="lock"
                 rightButton={
                   <TouchableIcon
-                    name={isPasswordVisible ? 'eye-off' : 'eye'}
+                    name={!isPasswordVisible ? 'eye-off' : 'eye'}
                     onPress={() => setPasswordVisible(!isPasswordVisible)}
                   />
                 }
@@ -187,7 +187,7 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default React.memo(Login);
 
 const styles = StyleSheet.create({
   flex: {

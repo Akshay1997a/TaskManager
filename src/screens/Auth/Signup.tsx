@@ -160,7 +160,7 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default React.memo(Signup);
 
 const Shape = styled(ShapeSVG)({
   position: 'absolute',
