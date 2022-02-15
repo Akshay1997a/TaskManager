@@ -15,6 +15,13 @@ import {darkTheme, lightTheme} from './theme/themes';
 import SplashScreen from 'react-native-splash-screen';
 import {Provider} from 'react-redux';
 import {store} from './store/store';
+import Crashlytics from '@react-native-firebase/crashlytics';
+
+const consoleError = console.error;
+console.error = error => {
+  Crashlytics().recordError(error);
+  consoleError(error);
+};
 
 const App = () => {
   useEffect(() => {

@@ -18,7 +18,7 @@ export const login = createAsyncThunk(
       dispatch(updateUser(res.user.toJSON() as any));
       return await res.user.getIdToken();
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return error;
     } finally {
       dispatch(setLoading(false));
@@ -34,7 +34,7 @@ export const signUp = createAsyncThunk(
       let res = await auth().createUserWithEmailAndPassword(email, password);
       console.log(res);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return error;
     } finally {
       dispatch(setLoading(false));
@@ -50,7 +50,7 @@ export const signOut = createAsyncThunk(
       let res = await auth().signOut();
       return res;
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       dispatch(setLoading(false));
     }
