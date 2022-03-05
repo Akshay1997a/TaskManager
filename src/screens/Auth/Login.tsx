@@ -39,6 +39,7 @@ import {ROUTES} from '../../navigations/Routes';
 import {useAppDispatch, useAppSelector} from '../../hooks/redux';
 import {getLoading, setLoading} from '../../store/loading/loadingSlice';
 import {login} from '../../store/auth/authThunks';
+import {useAlert} from '../../components/Alert/Alert';
 
 const Login = () => {
   const theme = useTheme();
@@ -50,6 +51,7 @@ const Login = () => {
   const navigation = useNavigation();
   const isLoading = useAppSelector(getLoading);
   const dispatch = useAppDispatch();
+  const alert = useAlert();
   const [isPasswordVisible, setPasswordVisible] = useState(false);
 
   const onShowHide = (event: 'hide' | 'show') => {
@@ -69,7 +71,8 @@ const Login = () => {
 
   const handleLogin = async (values: any) => {
     console.log(values);
-    await dispatch(login({email: values.email, password: values.password}));
+    // await dispatch(login({email: values.email, password: values.password}));
+    alert.show('Login successfull');
   };
 
   const gotoSignupPage = () => {
@@ -167,9 +170,9 @@ const Login = () => {
             <Col style={styles.bottom}>
               <ButtonPrimary
                 title="Login"
-                disabled={!isValid}
+                // disabled={!isValid}
                 isLoading={isLoading}
-                onPress={handleSubmit}
+                onPress={handleLogin}
               />
               <TextButton
                 title="Sign Up"

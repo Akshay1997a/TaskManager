@@ -4,6 +4,14 @@ import loadingSlice from './loading/loadingSlice';
 import userReducer from './user/userSlice';
 import reduxLogger from 'redux-logger';
 
+const middlewares: Array<any> = [];
+
+if (__DEV__) {
+  middlewares.push(reduxLogger);
+  const createDebugger = require('redux-flipper').default;
+  middlewares.push(createDebugger());
+}
+
 const store = configureStore({
   reducer: {
     loading: loadingSlice,
@@ -11,7 +19,7 @@ const store = configureStore({
     user: userReducer,
   },
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(reduxLogger),
+    getDefaultMiddleware().concat(middlewares),
 });
 
 export {store};

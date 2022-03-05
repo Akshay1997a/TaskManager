@@ -7,6 +7,7 @@ export const Container = styled.View(props => ({
   backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
   alignItems: 'center',
   width: '100%',
+  zIndex: 1,
 }));
 
 export const Row = styled.View({

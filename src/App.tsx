@@ -8,14 +8,11 @@
  * @format
  */
 
-import React, {useEffect} from 'react';
-import {ThemeProvider} from 'styled-components';
+import React from 'react';
 import RootNavigator from './navigations/RootNavigator';
-import {darkTheme, lightTheme} from './theme/themes';
-import SplashScreen from 'react-native-splash-screen';
-import {Provider} from 'react-redux';
-import {store} from './store/store';
 import Crashlytics from '@react-native-firebase/crashlytics';
+import {AppProviders} from './providers/AppProviders';
+import {useFlipper} from '@react-navigation/devtools';
 
 const consoleError = console.error;
 console.error = error => {
@@ -24,16 +21,10 @@ console.error = error => {
 };
 
 const App = () => {
-  useEffect(() => {
-    SplashScreen.hide();
-  }, []);
-
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={lightTheme}>
-        <RootNavigator />
-      </ThemeProvider>
-    </Provider>
+    <AppProviders>
+      <RootNavigator />
+    </AppProviders>
   );
 };
 
