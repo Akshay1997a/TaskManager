@@ -70,7 +70,6 @@ const Login = () => {
   };
 
   const handleLogin = async (values: any) => {
-    console.log(values);
     await dispatch(login({email: values.email, password: values.password}));
   };
 
