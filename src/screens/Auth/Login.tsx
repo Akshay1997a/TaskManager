@@ -39,7 +39,7 @@ import {ROUTES} from '../../navigations/Routes';
 import {useAppDispatch, useAppSelector} from '../../hooks/redux';
 import {getLoading, setLoading} from '../../store/loading/loadingSlice';
 import {login} from '../../store/auth/authThunks';
-import {useAlert} from '../../components/Alert/Alert';
+import {useAlert} from '../../components/Alert/AlertProvider';
 
 const Login = () => {
   const theme = useTheme();
@@ -71,8 +71,7 @@ const Login = () => {
 
   const handleLogin = async (values: any) => {
     console.log(values);
-    // await dispatch(login({email: values.email, password: values.password}));
-    alert.show('Login successfull');
+    await dispatch(login({email: values.email, password: values.password}));
   };
 
   const gotoSignupPage = () => {
@@ -170,9 +169,9 @@ const Login = () => {
             <Col style={styles.bottom}>
               <ButtonPrimary
                 title="Login"
-                // disabled={!isValid}
+                disabled={!isValid}
                 isLoading={isLoading}
-                onPress={handleLogin}
+                onPress={handleSubmit}
               />
               <TextButton
                 title="Sign Up"

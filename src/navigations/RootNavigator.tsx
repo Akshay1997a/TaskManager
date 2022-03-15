@@ -34,7 +34,7 @@ export default function RootNavigator() {
   };
 
   const onStateChange = (state: any) => {
-    AsyncStorage.setItem(PERSISTED_NAVIGATION_STATE, state);
+    AsyncStorage.setItem(PERSISTED_NAVIGATION_STATE, JSON.stringify(state));
   };
 
   useEffect(() => {

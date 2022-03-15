@@ -2,6 +2,7 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import auth, {firebase} from '@react-native-firebase/auth';
 import {setLoading} from '../loading/loadingSlice';
 import {updateUser} from '../user/userSlice';
+import {Alert} from 'react-native';
 
 interface AuthInterface {
   email: string;

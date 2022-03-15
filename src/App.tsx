@@ -12,7 +12,6 @@ import React from 'react';
 import RootNavigator from './navigations/RootNavigator';
 import Crashlytics from '@react-native-firebase/crashlytics';
 import {AppProviders} from './providers/AppProviders';
-import {useFlipper} from '@react-navigation/devtools';
 
 const consoleError = console.error;
 console.error = error => {

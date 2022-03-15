@@ -2,12 +2,10 @@ import {configureStore} from '@reduxjs/toolkit';
 import authSlice from './auth/authSlice';
 import loadingSlice from './loading/loadingSlice';
 import userReducer from './user/userSlice';
-import reduxLogger from 'redux-logger';
 
 const middlewares: Array<any> = [];
 
 if (__DEV__) {
-  middlewares.push(reduxLogger);
   const createDebugger = require('redux-flipper').default;
   middlewares.push(createDebugger());
 }

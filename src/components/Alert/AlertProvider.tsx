@@ -1,4 +1,10 @@
-import React, {createContext, useContext, useRef, useState} from 'react';
+import React, {
+  createContext,
+  useContext,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import {Animated, Easing, View} from 'react-native';
 import styled from 'styled-components/native';
 import {fontScale, heightScale} from '../../helpers/ResponsiveDesign';
@@ -13,7 +19,7 @@ const AlertContext = createContext<IAlertContext>({
   hide: () => {},
 });
 
-export function AlertProvider(props: AlertProviderProps) {
+const AlertProvider = (props: AlertProviderProps) => {
   const [message, setMessage] = useState('');
   const fade = useRef(new Animated.Value(0)).current;
   const [isAnimationCompleted, setAnimationCompleted] = useState(false);
@@ -99,10 +105,16 @@ export function AlertProvider(props: AlertProviderProps) {
       <AlertComponent />
     </AlertContext.Provider>
   );
-}
+};
+
+export default React.memo(AlertProvider);
 
 export function useAlert() {
   return useContext(AlertContext);
+}
+
+export const Alert = {
+  
 }
 
 export const OverlayView = styled.View`
