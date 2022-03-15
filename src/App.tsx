@@ -14,7 +14,7 @@ import Crashlytics from '@react-native-firebase/crashlytics';
 import {AppProviders} from './providers/AppProviders';
 
 const consoleError = console.error;
-console.error = error => {
+console.error = function (error) {
   Crashlytics().recordError(error);
   consoleError(error);
 };
