@@ -1,62 +1,93 @@
-import React, {
-  createContext,
-  useContext,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, {Component, createContext, useContext} from 'react';
 import {Animated, Easing, View} from 'react-native';
-import styled from 'styled-components/native';
+import styled, {
+  DefaultTheme,
+  ThemeProps,
+  withTheme,
+} from 'styled-components/native';
 import {fontScale, heightScale} from '../../helpers/ResponsiveDesign';
 import metrices from '../../theme/metrices';
 import {Icon} from '../Icons';
-import {H1, H5, P, Row} from '../Primitives/Primitives';
-import {AlertProviderProps, IAlertContext} from './types';
-import {useTheme} from 'styled-components';
+import {H1, H5, Row} from '../Primitives/Primitives';
+import {IAlertContext} from './types';
+
+interface AlertProps extends ThemeProps<DefaultTheme> {}
+interface AlertState {
+  message: string;
+  isAnimationCompleted: boolean;
+}
 
 const AlertContext = createContext<IAlertContext>({
   show: () => {},
   hide: () => {},
 });
 
-const AlertProvider = (props: AlertProviderProps) => {
-  const [message, setMessage] = useState('');
-  const fade = useRef(new Animated.Value(0)).current;
-  const [isAnimationCompleted, setAnimationCompleted] = useState(false);
-  const theme = useTheme();
-  let animRef = null;
+class AlertProvider extends Component<AlertProps, {}> {
+  render(): React.ReactNode {
+    return (
+      <Alert ref={ref => (Alert.instance = ref)} {...this.props}>
+        {this.props.children}
+      </Alert>
+    );
+  }
+}
 
-  const show = (message: string) => {
-    setMessage(message);
-    animRef = Animated.timing(fade, {
+export class Alert extends Component<AlertProps, AlertState> {
+  animRef?: Animated.CompositeAnimation;
+  fade = new Animated.Value(0);
+  static instance: Alert | null;
+  constructor(props: AlertProps) {
+    super(props);
+    this.state = {
+      message: '',
+      isAnimationCompleted: false,
+    };
+    this.AlertComponent = this.AlertComponent.bind(this);
+    this.showAlert = this.showAlert.bind(this);
+    this.hideAlert = this.hideAlert.bind(this);
+  }
+
+  static show(message: string) {
+    this.instance?.showAlert(message);
+  }
+
+  static hide() {
+    this.instance?.hideAlert();
+  }
+
+  showAlert(message: string) {
+    this.setState({message});
+    this.animRef = Animated.timing(this.fade, {
       toValue: 1,
       duration: 150,
       useNativeDriver: true,
       easing: Easing.inOut(Easing.ease),
     });
-    animRef.start(e => {
+    this.animRef.start(e => {
       if (e.finished) {
-        setAnimationCompleted(true);
+        this.setState({isAnimationCompleted: true});
       }
     });
-  };
+  }
 
-  const hide = () => {
-    Animated.timing(fade, {
+  hideAlert() {
+    Animated.timing(this.fade, {
       toValue: 0,
       duration: 150,
       useNativeDriver: true,
     }).start(e => {
       if (e.finished) {
-        setAnimationCompleted(false);
+        this.setState({isAnimationCompleted: false});
       }
     });
-  };
+  }
 
-  const AlertComponent = React.useCallback(() => {
+  AlertComponent() {
     const AnimatedOverlayView = Animated.createAnimatedComponent(OverlayView);
     const AnimatedAlertContainer =
       Animated.createAnimatedComponent(AlertContainer);
+    const {isAnimationCompleted, message} = this.state;
+    const {fade, hideAlert: hide, showAlert: show} = this;
     return (
       <AnimatedOverlayView
         style={{opacity: fade}}
@@ -77,7 +108,7 @@ const AlertProvider = (props: AlertProviderProps) => {
                 height: 60,
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: theme.PRIMARY_BUTTON_COLOR,
+                backgroundColor: this.props.theme.PRIMARY_BUTTON_COLOR,
                 borderRadius: 100,
                 elevation: 5,
               }}>
@@ -97,24 +128,22 @@ const AlertProvider = (props: AlertProviderProps) => {
         </AnimatedAlertContainer>
       </AnimatedOverlayView>
     );
-  }, [message, isAnimationCompleted]);
+  }
+  render(): React.ReactNode {
+    const {AlertComponent, props, showAlert: show, hideAlert: hide} = this;
+    return (
+      <AlertContext.Provider value={{show, hide}}>
+        {props.children}
+        <AlertComponent />
+      </AlertContext.Provider>
+    );
+  }
+}
 
-  return (
-    <AlertContext.Provider value={{show, hide}}>
-      {props.children}
-      <AlertComponent />
-    </AlertContext.Provider>
-  );
-};
-
-export default React.memo(AlertProvider);
+export default withTheme(AlertProvider);
 
 export function useAlert() {
   return useContext(AlertContext);
-}
-
-export const Alert = {
-  
 }
 
 export const OverlayView = styled.View`
