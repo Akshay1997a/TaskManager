@@ -129,7 +129,7 @@ export class Alert extends Component<AlertProps, AlertState> {
       </AnimatedOverlayView>
     );
   }
-  render(): React.ReactNode {
+  render() {
     const {AlertComponent, props, showAlert: show, hideAlert: hide} = this;
     return (
       <AlertContext.Provider value={{show, hide}}>
@@ -140,7 +140,7 @@ export class Alert extends Component<AlertProps, AlertState> {
   }
 }
 
-export default withTheme(AlertProvider);
+export default withTheme<any>(AlertProvider);
 
 export function useAlert() {
   return useContext(AlertContext);
